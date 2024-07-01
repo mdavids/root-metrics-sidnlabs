@@ -110,7 +110,7 @@
       creates: /home/metrics/.local/lib/python3.7/site-packages/dns
   - name: Pull or freshen the Github repo
     git:
-      repo: 'https://github.com/icann/root-metrics-sidnlabs.git'
+      repo: 'https://github.com/mdavids/root-metrics-sidnlabs.git'
       dest: /home/metrics/repo
       version: main
   - name: Run "get_root_zone.py --vp" immediately if needed

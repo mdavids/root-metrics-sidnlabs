@@ -101,7 +101,7 @@
       dest: /home/metrics/vp_list.txt
   - name: Pull or freshen the Github repo
     git:
-      repo: 'https://github.com/icann/root-metrics-sidnlabs.git'
+      repo: 'https://github.com/mdavids/root-metrics-sidnlabs.git'
       dest: /home/metrics/repo
       version: main     # no-transfer-user
   - name: get dnspython

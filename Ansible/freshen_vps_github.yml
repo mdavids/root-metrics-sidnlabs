@@ -6,6 +6,6 @@
   tasks:
   - name: Freshen GitHub for metrics user in VPs
     git:
-      repo: "https://github.com/icann/root-metrics-sidnlabs.git"
+      repo: "https://github.com/mdavids/root-metrics-sidnlabs.git"
       dest: /home/metrics/repo
       version: main
