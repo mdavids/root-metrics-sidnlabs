@@ -1,1 +1,2 @@
 vp-ams1.sidnlabs.nl
+vp-waw1.sidnlabs.nl
