@@ -1,0 +1,18 @@
+- name: Maintainthe machine as root
+  hosts: all_vps  
+  remote_user: "{{ superuser }}"
+  become_user: root
+  become: yes
+  tasks:
+  - name: Initialize apt
+    apt:
+      update_cache: true
+  - name: Do the apt upgrade
+    apt:
+      upgrade: full
+      force: true
+  - name: Remove dependencies that are no longer required and purge their configuration files
+    apt:
+      autoremove: yes
+      purge: true
+    
