@@ -1,2 +1,17 @@
 vp-ams1.sidnlabs.nl
+vp-del1.sidnlabs.nl
+vp-gru1.sidnlabs.nl
+vp-hnl1.sidnlabs.nl
+vp-icn1.sidnlabs.nl
+vp-itm1.sidnlabs.nl
+vp-jnb1.sidnlabs.nl
+vp-mad1.sidnlabs.nl
+vp-mel1.sidnlabs.nl
+vp-mex1.sidnlabs.nl
+vp-mia1.sidnlabs.nl
+vp-scl1.sidnlabs.nl
+vp-sea1.sidnlabs.nl
+vp-sin1.sidnlabs.nl
+vp-sjc1.sidnlabs.nl
+vp-tlv1.sidnlabs.nl
 vp-waw1.sidnlabs.nl
