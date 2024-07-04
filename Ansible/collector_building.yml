@@ -174,6 +174,7 @@
       - likely_soa text
       - is_correct text
       - failure_reason text
+      - nsid text
   - name: Create index in record_info table
     postgresql_idx:
       login_user: metrics

@@ -142,7 +142,7 @@ def process_one_incoming_file(file_as_path):
 
 		# Named tuple for the record templates
 		template_names_raw = "filename_record date_derived target internet transport ip_addr record_type query_elapsed timeout soa_found " \
-			+ "likely_soa is_correct failure_reason"
+			+ "likely_soa is_correct failure_reason nsid"
 		# Change spaces to ", "
 		template_names_with_commas = template_names_raw.replace(" ", ", ")
 		# List of "%s, " for Postgres "insert" commands; remove trailing ", "
@@ -162,10 +162,14 @@ def process_one_incoming_file(file_as_path):
 				alert(f"Found a response type {this_resp['test_type']}, which is not S or C, in record {response_count} of {str_of_file_path}")
 				continue
 			short_name_and_count = f"{short_file_name}-{response_count}"
+			nsid = None
+			if "edns" in this_resp:
+				if 3 in this_resp["edns"]:
+					nsid = this_resp["edns"][3].decode("utf-8")
 			insert_template = f"insert into record_info ({template_names_with_commas}) values ({percent_s_string})"
 			insert_values = insert_values_template(filename_record=short_name_and_count, date_derived=file_date, \
 				target=this_resp["target"], internet=this_resp["internet"], transport=this_resp["transport"], ip_addr=this_resp["ip_addr"], record_type=this_resp["test_type"], \
-				query_elapsed=0.0, timeout=this_resp["timeout"], soa_found="", likely_soa=in_obj["l"], is_correct="", failure_reason="")
+				query_elapsed=0.0, timeout=this_resp["timeout"], soa_found="", likely_soa=in_obj["l"], is_correct="", failure_reason="", nsid=nsid)
 			# If there is already something in timeout, just insert this record
 			if this_resp["timeout"]:
 				insert_values = insert_values._replace(is_correct="y")
