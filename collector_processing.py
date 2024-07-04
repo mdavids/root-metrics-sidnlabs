@@ -165,7 +165,7 @@ def process_one_incoming_file(file_as_path):
 			nsid = None
 			if "edns" in this_resp:
 				if 3 in this_resp["edns"]:
-					nsid = this_resp["edns"][3].decode("utf-8")
+					nsid = this_resp["edns"][3]
 			insert_template = f"insert into record_info ({template_names_with_commas}) values ({percent_s_string})"
 			insert_values = insert_values_template(filename_record=short_name_and_count, date_derived=file_date, \
 				target=this_resp["target"], internet=this_resp["internet"], transport=this_resp["transport"], ip_addr=this_resp["ip_addr"], record_type=this_resp["test_type"], \
