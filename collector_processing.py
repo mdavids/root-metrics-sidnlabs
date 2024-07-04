@@ -131,8 +131,8 @@ def process_one_incoming_file(file_as_path):
 	
 		short_file_name = (file_as_path.name).replace(".pickle.gz", "")
 
-		# Get the derived date and VP name from the file name
-		(file_date_text, _) = short_file_name.split("-")
+		# Get the derived date and VP name from the file name, assuming that file name is always first
+		file_date_text = short_file_name.split("-")[0]
 		try:
 			file_date = datetime.datetime(int(file_date_text[0:4]), int(file_date_text[4:6]), int(file_date_text[6:8]),\
 				int(file_date_text[8:10]), int(file_date_text[10:12]))
