@@ -254,10 +254,15 @@ if __name__ == "__main__":
 	scamper_output = ""
 	scamper_start_time = time.time()
 	this_scamper_cmd = "/usr/bin/scamper -i "
-	for this_target in test_targets:
+
+	# Use the scamper command to run traceroute-like queries for targets unrelated to the RSS
+	test_targets_expanded = test_targets
+	test_targets_expanded["google"] = { "v4": ["8.8.8.8"], "v6": ["2001:4860:4860::8888"] }
+	test_targets_expanded["cloudflare"] = { "v4": ["1.1.1.1"], "v6": ["2606:4700:4700::1111"] }
+
+	for this_target in test_targets_expanded:
 		for this_internet in ["v4", "v6"]:
-			specify_4_or_6 = "-4" if this_internet == "v4" else "-6"
-			for this_ip_addr in test_targets[this_target][this_internet]:
+			for this_ip_addr in test_targets_expanded[this_target][this_internet]:
 				this_scamper_cmd += f"{this_ip_addr} "
 	try:
 		command_p = subprocess.run(this_scamper_cmd, shell=True, capture_output=True, text=True, check=True)
